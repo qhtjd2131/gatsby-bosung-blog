@@ -1,1 +1,4 @@
 # Create a blog with gatsby. Step 2.
+
+
+markdown 문서의 가장 위쪽에 있는 메타 데이터를 frontmatter라고 한다.
