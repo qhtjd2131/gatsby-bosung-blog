@@ -9,8 +9,8 @@ interface ILayoutProps{
 const Layout = ({ location, title, children } : ILayoutProps) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath
-  let header
 
+  let header
   if (isRootPath) {
     header = (
       <h1 className="main-heading">

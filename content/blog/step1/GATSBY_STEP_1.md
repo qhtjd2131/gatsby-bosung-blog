@@ -1,4 +1,8 @@
-# Create a blog with gatsby. Step 1.
+---
+title: "Create a blog with gatsby! Step 1."
+date: "2021-12-31T21:36:00"
+description: "Gatsby Project를 생성하고, 로컬서버로 구동하기"
+---
 
 ## Gatsby Project를 생성하고, 로컬서버로 구동하기
 ---
@@ -8,11 +12,11 @@
 Gatsby는 간단하게 말해서 정적 사이트 생성기(static site generators)이다. 정적 사이트를 생성하기 위해 React, Graphql, Webpack을 사용하는 하나의 프레임워크로 구성된다.
 Gatsby로 생성된 사이트는 템플릿과 컨텐츠(md file)로 분리되어, 빌드하는 시점에서 컨텐츠와 템플릿을 결합하여 HTML 페이지를 생성하고 응답하는 웹서버에 배포한다. 그렇기 때문에 HTML을 제공하는 서버가 필요없게 된다. 이러한 특성은 JAM Stack 아키텍처를 가능하게 만드는데, 이는 더 빠르고 안전한 웹사이트를 구축할 수 있는 장점이 있다.
 
-위 내용을 기반으로 이 블로그는 다음과 같은 흐름을 가지게된다.
-1. gatsby 프로젝트 생성 및 구현
-2. github에 프로젝트 push
-3. gatsby cloud와 github 연결 후 build
-4. 배포
+위 내용을 기반으로 이 블로그는 다음과 같은 흐름을 가지게된다.<br><br>
+  1 : gatsby 프로젝트 생성 및 구현<br>
+  2 : github에 프로젝트 push<br>
+  3 : gatsby cloud와 github 연결 후 build<br>
+  4 : 배포<br>
 
 
 ![deployment-workflow](./gatsby-deployment-workflow.png)
@@ -78,8 +82,12 @@ View GraphiQL, an in-browser IDE, to explore your site's data and schema
 
 **localhost 접속**
 
-![image](https://user-images.githubusercontent.com/34260967/147789753-a93ebee4-f89e-41dd-8d4e-9ae99a1ce775.png)
+<img src="https://user-images.githubusercontent.com/34260967/147789753-a93ebee4-f89e-41dd-8d4e-9ae99a1ce775.png" width="100%">
+
 
 **localhost:8000/__graphql 접속**
-![image](https://user-images.githubusercontent.com/34260967/147790319-a44e7b6b-ef24-425c-a321-2a88f246817a.png)
+
+<img src="https://user-images.githubusercontent.com/34260967/147790319-a44e7b6b-ef24-425c-a321-2a88f246817a.png" width="100%">
+
+
 
