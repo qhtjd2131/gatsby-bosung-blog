@@ -26,6 +26,7 @@ const Layout = ({ location, title, children } : ILayoutProps) => {
   }
 
   return (
+    <div className="test">
     <div className="global-wrapper" data-is-root-path={isRootPath}>
       <header className="global-header">{header}</header>
       <main>{children}</main>
@@ -34,6 +35,7 @@ const Layout = ({ location, title, children } : ILayoutProps) => {
         {` `}
         <a href="https://www.gatsbyjs.com">Gatsby</a>
       </footer>
+    </div>
     </div>
   )
 }
