@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Bosung's Blog`,
+    title: `Bosung's Blog`,
     author: {
       name: `Choi Bosung`,
       summary: `who lives Korea.  `,
