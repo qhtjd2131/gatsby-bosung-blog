@@ -19,7 +19,8 @@
   --maxWidth-4xl: 56rem;
   --maxWidth-5xl: 70rem;
   --maxWidth-full: "100%";
-  --maxWidth-wrapper: var(--maxWidth-5xl);
+  --maxWidth-wrapper: var(--maxWidth-4xl);
+  --maxWidth-wrapper-mobile: var(--maxWidth-2xl);
   --spacing-px: "1px";
   --spacing-0: 0;
   --spacing-1: 0.25rem;
@@ -246,16 +247,18 @@ a:focus {
   text-decoration: none;
 }
 
+
+
 /* Custom classes */
 
 .global-wrapper {
   margin: var(--spacing-0) auto;
   max-width: var(--maxWidth-wrapper);
   padding: var(--spacing-10) var(--spacing-5);
-  /* display: flex;
-  flex-direction: column;
-  align-items: center; */
+
+ 
 }
+
 
 .test {
   display: flex;
@@ -347,4 +350,12 @@ a:focus {
   ol {
     list-style-position: inside;
   }
+
+
 }
+@media screen and (max-width: 56rem) {
+  .global-wrapper {
+    max-width: var(--maxWidth-wrapper-mobile);
+  }
+}
+
