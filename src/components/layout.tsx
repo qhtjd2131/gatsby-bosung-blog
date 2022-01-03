@@ -1,11 +1,13 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
+
 interface ILayoutProps{
-  location : any,
-  title : any,
-  children : any,
+  location : Location,
+  title : string,
+  children : React.ReactNode,
 }
+
 const Layout = ({ location, title, children } : ILayoutProps) => {
   const rootPath = `${__PATH_PREFIX__}/`
   const isRootPath = location.pathname === rootPath

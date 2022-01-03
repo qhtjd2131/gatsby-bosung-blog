@@ -6,19 +6,26 @@
  */
 
 import * as React from "react"
-import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-interface ISeoProps{
-  description : any,
-  lang : any,
-  meta : any,
-  title : string,
+interface SEOProps {
+  description?: string,
+  lang?: string,
+  meta?: ConcatArray<NameMeta | PropertyMeta>
+  title: string
+}
+interface NameMeta {
+  name : string,
+  content : string,
+}
+interface PropertyMeta {
+  property : string,
+  content : string,
 }
 
-const Seo = ({ description, lang, meta, title }: ISeoProps) => {
-  const { site } = useStaticQuery(
+const Seo = ({ description='', lang='en', meta=[], title }: SEOProps) => {
+  const { site } : any = useStaticQuery(
     graphql`
       query {
         site {
@@ -27,6 +34,7 @@ const Seo = ({ description, lang, meta, title }: ISeoProps) => {
             description
             social {
               github
+              gmail
             }
           }
         }
@@ -34,8 +42,8 @@ const Seo = ({ description, lang, meta, title }: ISeoProps) => {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription : string = description || site.siteMetadata.description
+  const defaultTitle : string = site.siteMetadata?.title
 
   return (
     <Helmet
@@ -66,17 +74,5 @@ const Seo = ({ description, lang, meta, title }: ISeoProps) => {
   )
 }
 
-Seo.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-Seo.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
-}
 
 export default Seo

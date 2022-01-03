@@ -9,8 +9,20 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
+interface ISocial {
+  github: string
+  twitter?: string
+  gmail?: string
+  facebook?: string
+}
+
+interface IAuthor {
+  name: string
+  summary: string
+}
+
 const Bio = () => {
-  const data = useStaticQuery(graphql`
+  const data: any = useStaticQuery(graphql`
     query BioQuery {
       site {
         siteMetadata {
@@ -20,6 +32,7 @@ const Bio = () => {
           }
           social {
             github
+            gmail
           }
         }
       }
@@ -27,8 +40,8 @@ const Bio = () => {
   `)
 
   // Set these values by editing "siteMetadata" in gatsby-config.js
-  const author = data.site.siteMetadata?.author
-  const social = data.site.siteMetadata?.social
+  const author: IAuthor = data.site.siteMetadata?.author
+  const social: ISocial = data.site.siteMetadata?.social
 
   return (
     <div className="bio">
@@ -47,9 +60,10 @@ const Bio = () => {
           Written by <strong>{author.name}</strong> {author?.summary || null}
           {` `}
           <br></br>
-          <a href={`https://github.com/${social?.github || ``}`}>
-            Github Link
-          </a>
+          github: 
+          <a href={`https://github.com/${social?.github || ``}`}> https://github.com/{social?.github || ''}</a>
+          <br />
+          {`Email: ${social?.gmail || ``}@gmail.com`}
         </p>
       )}
     </div>
