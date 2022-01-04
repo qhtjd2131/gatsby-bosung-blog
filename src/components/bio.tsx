@@ -60,10 +60,14 @@ const Bio = () => {
           Written by <strong>{author.name}</strong> {author?.summary || null}
           {` `}
           <br></br>
-          github: 
-          <a href={`https://github.com/${social?.github || ``}`}> https://github.com/{social?.github || ''}</a>
+          github:
+          <a href={`https://github.com/${social?.github || ``}`}>
+            {" "}
+            https://github.com/{social?.github || ""}
+          </a>
           <br />
-          {`Email: ${social?.gmail || ``}@gmail.com`}
+          Email:
+          <>{` ${social?.gmail || ``}@gmail.com`}</>
         </p>
       )}
     </div>
