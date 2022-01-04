@@ -1,10 +1,10 @@
 ---
 title: "Create a blog with gatsby! Step 4."
 date: "2022-01-04T17:23:00"
-description: "MardownFile은 어떻게 읽혀질까 / 블로그에 포스트 올리기(content 추가하기)"
+description: "MarkdownFile은 어떻게 읽혀질까 / 블로그에 포스트 올리기(content 추가하기)"
 ---
 
-# MardownFile은 어떻게 읽혀질까 / 블로그에 포스트 올리기(content 추가하기)
+# MarkdownFile은 어떻게 읽혀질까 / 블로그에 포스트 올리기(content 추가하기)
 
 ---
 
