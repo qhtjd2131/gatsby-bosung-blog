@@ -85,6 +85,7 @@ View GraphiQL, an in-browser IDE, to explore your site's data and schema
 <img src="https://user-images.githubusercontent.com/34260967/147789753-a93ebee4-f89e-41dd-8d4e-9ae99a1ce775.png" width="100%">
 
 
+
 **localhost:8000/__graphql 접속**
 
 <img src="https://user-images.githubusercontent.com/34260967/147790319-a44e7b6b-ef24-425c-a321-2a88f246817a.png" width="100%">
