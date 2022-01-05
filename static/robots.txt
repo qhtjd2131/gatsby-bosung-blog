@@ -1,3 +1,7 @@
 User-agent: *
-Disallow:
+Allow : /
+
+User-agent: Googlebot-image
+Disallow : /
+
 Sitemap: https://gatsbybosungblogmain.gatsbyjs.io/sitemap/sitemap-index.xml
