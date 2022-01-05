@@ -69,6 +69,10 @@ const Seo = ({ description='', lang='en', meta=[], title }: SEOProps) => {
           property: `og:type`,
           content: `website`,
         },
+        {
+          name : `google-site-verification`,
+          content: `<meta name="google-site-verification" content="EyS_Lm1q6cZ0SaSIzcQj9_fpqziznkGn2JJizA-l_so" />`
+        }
       ].concat(meta)}
     />
   )
