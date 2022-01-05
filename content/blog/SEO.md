@@ -11,8 +11,7 @@ description: "SEO 작업하고 Google에 등록하기"
 <br>
 
 ## SEO란?
-SEO 는 Search Engine Optimization의 약자로, 검색 엔진으로부터 웹사이트나 웹페이지에 대한 웹사이트 트래픽의 품질과 양을 개선하는 과정이다. 웹 페이지 검색엔진이 자료를 수집하고 순위를 매기는 방식에 맞게 웹 페이지를 구성해서 검색 결과의 상위에 나올 수 있게 한다.<br>
-wikipedia : https://ko.wikipedia.org/wiki/%EA%B2%80%EC%83%89_%EC%97%94%EC%A7%84_%EC%B5%9C%EC%A0%81%ED%99%94
+SEO 는 Search Engine Optimization의 약자로, 검색 엔진으로부터 웹사이트나 웹페이지에 대한 웹사이트 트래픽의 품질과 양을 개선하는 과정이다. 웹 페이지 검색엔진이 자료를 수집하고 순위를 매기는 방식에 맞게 웹 페이지를 구성해서 검색 결과의 상위에 나올 수 있게 한다.<br> [wikipedia : SEO](https://ko.wikipedia.org/wiki/%EA%B2%80%EC%83%89_%EC%97%94%EC%A7%84_%EC%B5%9C%EC%A0%81%ED%99%94)
 
 
 ## SEO 작업하기(sitemap, rss)
@@ -27,7 +26,7 @@ wikipedia : https://ko.wikipedia.org/wiki/%EA%B2%80%EC%83%89_%EC%97%94%EC%A7%84_
 npm install --save gatsby-plugin-sitemap gatsby-plugin-feed
 ```
 
-gatsby-plugin-sitemap : https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/ 
+[gatsby-plugin-sitemap LINK](https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/)
 
 플러그인을 설치하고 `gatsby-config.js`의 plugin에 적용하면 끝입니다.
 
@@ -36,7 +35,7 @@ gatsby-plugin-sitemap : https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/
 
 ```
 localhost:8000/sitemap/sitemap-index.xml     //sitemap 
-localhost:8000/rss.xml               //rss
+localhost:8000/rss.xml                       //rss
 ```
 
 ## robots.txt
@@ -71,7 +70,7 @@ robots.txt 설정방법 참고 : https://extrememanual.net/10728
 
 Google 검색엔진이 나의 사이트에 대한 정보가 없기때문에 위와 같은 화면을 띄워준다. 그리고 Google Search Console을 사용하라고 알려준다. 해당 글을 클릭하여 접속해보자.
 
-![image](https://user-images.githubusercontent.com/34260967/148152639-bcce1036-3e43-40fe-b25f-7dd676c8771e.png)
+<img src="https://user-images.githubusercontent.com/34260967/148152639-bcce1036-3e43-40fe-b25f-7dd676c8771e.png" width="100%">
 
 속성 유형을 선택한다. 속성유형에는 도메인, URL 접두어 두가지가 있다.
 도메인 유형은 직접 구매한 도메인일 때 사용한다.
@@ -81,7 +80,8 @@ url 접두어 유형은 github이나 netlify, gatsby cloud등 과같이 도메�
 <br>
 이 블로그는 Gatsby Cloud를 통해 링크를 받았으므로 URL 접두어 유형을 사용하면 된다. 해당 도메인을 입력하고 나면 소유권을 확인하라고 한다. 소유권을 확인하는 방법은 여러가지인데 가장 권장하는 방법은 HTML파일로 소유권을 확인하는 방법이라고 적혀있다.
 
-![image](https://user-images.githubusercontent.com/34260967/148153269-f4cac0dc-8833-45f8-bdbc-3eaf4dac9fd5.png)
+
+<img src="https://user-images.githubusercontent.com/34260967/148153269-f4cac0dc-8833-45f8-bdbc-3eaf4dac9fd5.png" width="100%">
 
 아마 여기서 하라는대로 한다면 소유권확인에 문제가 있을것이다. 왜냐하면 디렉토리에 저장한 `.html` 파일은 Gatsby Cloud에서 배포하는 시점에서 읽을 수 없기 때문이다. 그렇기 때문에 빌드시점에 명령어를 통해 복사본을 만들어 배치시켜야 한다.<br>
 참고: https://dailyco.tech/share/gatsby-blog-seo/#url-%EC%A0%91%EB%91%90%EC%96%B4%EB%A5%BC-%ED%86%B5%ED%95%B4-%EB%93%B1%EB%A1%9D%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
