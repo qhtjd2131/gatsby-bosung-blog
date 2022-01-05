@@ -12,7 +12,6 @@ description: "Gatsby Cloud를 통해 블로그 배포하기"
 
 이 포스트는 Gatsby에서 제공하는 gatsby-starter-blog 라는 플러그인을 사용해 제작한 블로그의 코드 및 파일을 GitHub에 저장하고, Gatsby Cloud로 호스팅, 배포를 하는 과정을 설명합니다.
 
-<img src="" width="100%">
 
 ## Gatsby 회원가입
 
@@ -20,7 +19,8 @@ description: "Gatsby Cloud를 통해 블로그 배포하기"
 
 
 <br>
-Gatsby : https://www.gatsbyjs.com/
+
+Gatsby: https://www.gatsbyjs.com
 
 Gatsby 사이트에 'Products' 라는 네이게이션 항목에 Cloud가 있다.
 
@@ -61,7 +61,7 @@ Next 클릭
 <img src="https://user-images.githubusercontent.com/34260967/148125934-b28fdc90-2e7e-4c08-ab88-6470a3488e06.png" width="100%">
 
 
-Connect Intergrations 는 Headless CMS와의 연결을 묻는것이다. 해당사항이 없으므로 PASS 한다.
+Connect Intergrations 는 Headless CMS와의 연결을 묻는것이다. 해당사항이 없으므로 PASS 한다.<br><br>
 *Headless CMS란?(심재철 님 블로그) : https://simsimjae.medium.com/headless-cms%EB%9E%80-49569dc86daa
 
 Environment variables 는 환경변수이다. Gatsby는 Github repository 의 파일들을 build하여 배포한다. 즉 사용자의 로컬환경이 아니기에 로컬에서 사용하는 환경변수를 Gatsby Cloud가 알아야지 제대로 빌드하여 배포할 수 있다. 나도 따로 환경변수를 사용하지 않으므로 PASS 한다.
