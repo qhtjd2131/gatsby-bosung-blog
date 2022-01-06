@@ -8,6 +8,13 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+
+
+//style
+const HelmetWrapper = styled.div`
+ margin-left : 20px;
+`
 
 interface SEOProps {
   description?: string,
