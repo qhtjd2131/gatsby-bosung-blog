@@ -1,6 +1,6 @@
 ---
 title: "CRA 없이 React App 만들기"
-date: "2022-01-012T02:34:07"
+date: "2022-01-12T02:34:07"
 description: " CRA 없이 React 프로젝트 생성하고 구동하기"
 ---
 
