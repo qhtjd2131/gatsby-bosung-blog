@@ -13,10 +13,10 @@ description: "webpack v5의 asset을 사용하여 이미지파일 처리하기"
 
 랜더링 하고싶은 이미지를 `./src` 디렉토리에 저장하자. 나는 `.png` 파일과 `.jpg`파일 두개를 준비했다. 그리고 후에 `.svg`파일도 추가된다. 하지만 이를 처리하지않고 사용하면 에러가 발생하니 아래에서 따로 추가한다.
 
-**png**
+**png**<br>
 <img src="https://user-images.githubusercontent.com/34260967/149070047-bb7a36d0-15eb-4fba-bfde-a660684f8271.png" width="200px" height="200px">
 
-**jpg**
+**jpg**<br>
 <img src="https://user-images.githubusercontent.com/34260967/149077300-99b9660b-ce51-41ff-b9c1-b86c4c6d28b8.jpg" width="200px" height="200px">
 
 
@@ -77,8 +77,7 @@ You may need an appropriate loader to handle this file type, currently no loader
 
 ## file-loader ?
 
-**webpack version4에서 사용하는 방법입니다**
-**이 프로젝트는 version 5를 사용하므로 설명만 하고 적용하진 않습니다**
+**webpack version4에서 사용하는 방법입니다. 이 프로젝트는 version 5를 사용하므로 설명만 하고 적용하진 않습니다**
 
 webpack version 4에서는 외부파일을 import하기 위해선 `file-loader`가 필요했다.
 
@@ -90,6 +89,7 @@ npm install --save-dev file-loader
 
 내가 저장한 이미지의 파일확장자는 `.png`이다. 이 외에도 일반적인 이미지 파일을 `.jpg`,`.jpeg`,`.gif`가 있다. 이와같은 이미지파일을 처리하기 위해서는 `webpack.config.js`에 `rule`을 정의해주어야한다.
 
+**webpack.config.js modules/rules/**
 ```javascript
 {
     test: /\.(png|jpe?g|gif)$/i,
@@ -105,8 +105,7 @@ npm install --save-dev file-loader
 
 ## url-loader ?
 
-**webpack version4에서 사용하는 방법입니다**
-**이 프로젝트는 version 5를 사용하므로 설명만 하고 적용하진 않습니다**
+**webpack version4에서 사용하는 방법입니다. 이 프로젝트는 version 5를 사용하므로 설명만 하고 적용하진 않습니다**
 
 마찬가지로 webpack version 4 에서는 `file-loader`와 비슷한 일을하는 `url-loader`도 사용했다. `url-loader`는 크기가 작은 asset인 글꼴, 아이콘 등을 처리하기위해 쓰이며, 일반적으로 크기가 큰 파일은 `file-loader`를 쓴다.
 
@@ -114,6 +113,7 @@ npm install --save-dev file-loader
 
 url-loader : https://v4.webpack.js.org/loaders/url-loader/
 
+**webpack.config.js modules/rules/**
 ```javascript
 {
     test: /\.(png|jpg|gif|svg)$/i,
@@ -140,6 +140,7 @@ webpack5 asset : https://webpack.kr/guides/asset-modules/
 
 webpack에서 모듈을 이미 지원하고 있기 때문에, 따로 설치할 필요가 없다. `webpack.config.js`의 `rules`에 추가해서 적용해주자.
 
+**webpack.config.js modules/rules/**
 ```javascript
 {
     test: /\.(png|jpe?g)$/,
@@ -218,7 +219,9 @@ const App = () => {
 };
 ```
 
+<br>
 
+**webpack.config.js modules/rules/**
 ```javascript
 {
     test: /\.(png|jpe?g)$/,
@@ -247,7 +250,9 @@ const App = () => {
 ## asset
 
 version 4 에서 처럼 `file-loader`와 `url-loader`을 같이 사용하여 효율적인 번들링을 하고싶다면, version 5 에서는 `asset`을 사용하면 된다. `asset`역시 적용법은 간단하다. `asset/resource`와 `asset/inline`의 적용을 삭제하고, `asset`만 추가하자.
+<br>
 
+**webpack.config.js modules/rules/**
 ```javascript
 {
     test: /\.(png|jpe?g|svg)$/,
@@ -270,4 +275,4 @@ build를 해서 결과를 확인해보자.
 
 ![image](https://user-images.githubusercontent.com/34260967/149089529-803fc0d6-20f7-4e92-82ab-614be3512a94.png)
 
-이론적인 결과오 동일하게 나왔다. 서버를 구동해보니 랜더링도 문제없이 잘 되었다.
+이론적인 결과와 동일하게 나왔다. 서버를 구동해보니 랜더링도 문제없이 잘 되었다.
