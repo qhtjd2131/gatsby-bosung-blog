@@ -65,7 +65,6 @@ const GlobalStyle: any = createGlobalStyle`
   --color-heading: #1a202c;
   --color-heading-black: black;
   --color-accent: #d1dce5;
-  --color-test : black;
   --color-postitem-hover : #f1f1fa;
 }
 `
