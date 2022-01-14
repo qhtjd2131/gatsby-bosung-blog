@@ -289,6 +289,12 @@ target : ['browserslist'],
 ```
 target 필드는 어떤 환경을 대상으로 번들링할 것인가를 정의한다. javascript는 브라우저 뿐만아니라 서버에서도 사용되기 때문에 다양한 환경이 있고 이를 지원한다. target 필드의 기본값으로는 'web'이 들어간다. 기본값으로 웹 어플리케이션을 구동한다면, 크로스브라우징 문제를 해결하지 못한다(IE11에서 랜더링되지 않는다). 따라서 `package.json`에서 `browserlist`를 정의하여 적용할 필요가 있다.
 
+```
+npm install browserslist
+```
+
+browserslist는 `package.json` 에서 자동으로 `browserslist` 필드를 찾아서 적용한다. 덕분에 우리는 각 모듈마다 공통된 `target`을 한번에 설정할 수 있다.
+
 `create-react-app`을 사용하여 app을 만들었을때, `package.json`의 `browserslist`는 다음과 같이 설정되어있다. 똑같이 설정하자.
 ```javascript
 //package.json
