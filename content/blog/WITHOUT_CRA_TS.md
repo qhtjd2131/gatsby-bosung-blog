@@ -53,7 +53,6 @@ npm과 npx의 차이 : https://webruden.tistory.com/275
 
 명령어 실행후 root 디렉토리에 `tsconfig.json`파일이 생긴것을 확인 할 수 있다.
 
-
 ---
 
 ## tsconfig.json
@@ -136,14 +135,13 @@ const App = () => {
 export default App;
 ```
 
-typescript의 기능을 확인하기 위해 위와 같이 작성했다. 하지만 아직 `.tsx`파일을 번들링하는 `rule`이 없기 때문에, 테스트하기 어렵다. 아래에서 `.tsx`파일을 처리해보자
-
+typescript의 기능을 확인하기 위해 위와 같이 작성했다. 하지만 아직 `.tsx`파일을 번들링하는 `rule`이 없기 때문에, 테스트하기 어렵다. 아래에서 `.tsx`파일을 처리해보자.
 
 ---
 
-## webpack  `. tsx` 파일 처리
+## webpack  `.tsx` 파일 처리
 
-`.tsx`파일은 `tsconfig.json`에서 정의된 컴파일옵션을 따르게 된다.이에서 알 수 있듯이 typescript도 컴파일을 한다. 즉, typescript로 작성된 파일이 javascript로 컴파일이 되는것이다. 그런데 우리는 이미 똑같이 javascript로 컴파일하는 babel 이라는 모듈을 설치하고 적용하였다. 무엇이 다르고 어떤것을 선택해야 할까?
+`.tsx`파일은 `tsconfig.json`에서 정의된 컴파일옵션을 따르게 된다. 이에서 알 수 있듯이 typescript도 컴파일을 한다. 즉, typescript로 작성된 파일이 javascript로 컴파일이 되는것이다. 그런데 우리는 이미 똑같이 javascript로 컴파일하는 babel 이라는 모듈을 설치하고 적용하였다. 무엇이 다르고 어떤것을 선택해야 할까?
 
 webpack이 `.ts|.tsx`파일을 번들링 하기 위해서는 loader 라는것이 필요하다. `.ts|.tsx` 를 처리하는 loader는 2 종류가 있다(2022년 1월)
 
@@ -153,16 +151,62 @@ webpack이 `.ts|.tsx`파일을 번들링 하기 위해서는 loader 라는것이
 
 babel vs typescript : https://gatsbybosungblogmain.gatsbyjs.io/TS_VS_BABEL/
 
+위의 포스트를 참고하자. 결과적으로는 아래의 소스코드를 적용하면 된다.
+
+**webpack.config.js**
+```javascript
+const path = require("path");
+const createStyledComponentsTransformer =
+  require("typescript-plugin-styled-components").default;
+const styledComponentsTransformer = createStyledComponentsTransformer();
+//...
+
+module.exports = {
+  //...
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env", "@babel/preset-react"],
+            },
+          },
+          {
+            loader: "ts-loader",
+            options: {
+              getCustomTransformers: () => ({
+                before: [styledComponentsTransformer],
+              }),
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+    ],
+  },
+};
+```
+
+**tsconfig.json**
+```json
+{
+  "compilerOptions": {
+    "target": "es6",
+    "jsx": "react",
+    //...
+  }
+}
+```
+
 ## Test
 
-<img src="https://user-images.githubusercontent.com/34260967/149287228-84bb0f10-85ae-49d5-938b-4b5f3d338a84.png" width="100%">
+**Chrome**
+<img src="https://user-images.githubusercontent.com/34260967/150628426-ab484964-1c2e-4ff6-a148-a3bf7b5c9a23.png" width="100%">
 
-`styled-components`와 `function`이 잘 동작하는것을 볼 수 있다.
+**IE**
+<img src="https://user-images.githubusercontent.com/34260967/150628395-e13c4c88-b02e-478e-b74d-68ed55e8653c.png" width="100%">
 
-
-.tsx
-
-ts-loader : .tsx -> .js(es6)
-babel-loader  : .js(es6) -> .js(es5) (babel-plugin-styled-components 적용안됨.)
-따라서 typescript-plugin-styled-components 사용
-https://www.npmjs.com/package/typescript-plugin-styled-components
+IE와 Chrome 모두에서 `typsecript`파일이 트랜스파일되어 `styled-components`와 `function`이 잘 동작하는것을 볼 수 있다.
