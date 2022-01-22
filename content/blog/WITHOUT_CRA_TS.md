@@ -61,14 +61,38 @@ npm과 npx의 차이 : https://webruden.tistory.com/275
 
 그렇다면 우리는 `tsconfig.json`을 어떻게 구성해야 하는가?
 
-// tsconfig.js 옵션 설정 방법 블로그 포스트 링크
+`tsconfig.json` 의 옵션 내용을 간략하게 설명해주는 글을 참고하자.
+링크 : https://codingapple.com/unit/typescript-tsconfig-json/
 
-무엇인지 잘 모르겠다면 우선 아래의 `tsconfig.json`을 그대로 쓰고, 나중에 옵션을 변경하면서 알아보자.
+
 
 **tsconfig.json**
 ```json
-//tsconfig.json
+{
+  "compilerOptions": {
+    "target": "es5",
+    "jsx": "react",                       
+    "module": "commonjs",                          
+    "sourceMap": true,                              
+    "esModuleInterop": true,             
+    "noImplicitAny": true,                          
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
 ```
+위와 같이 설정하자. 간략하게 내용을 설명하자면 아래와 같다.
+- target : 어떤 js 버전으로 컴파일 할것인지 설정
+- jsx : `.tsx` 파일의 JSX 구문을 어떤 형식으로 변환할것인지 설정
+- module : `.js`파일 간 import 문법을 어떤 형식으로 할것인가 설정 
+- sourceMap : sourceMap 생성여부, sourceMap 은 번들되기 전 코드의 위치를 기억하여, 오류가 난 위치를 알 수 있게해준다.
+- esModuleInterop : import 하는 타입이 object가 아니더라도 `*` 키워드 없이사용 가능하게 한다.
+  ```javascript 
+  import * as React from "react"   // esModuleInterop : false 일때
+
+  import React from "react" // esModuleInterop : true 일 때
+  ```
+- noImplicitAny : any 타입이 의도치않게 발생할 경우 에러를 띄워주는 설정
 
 ---
 
