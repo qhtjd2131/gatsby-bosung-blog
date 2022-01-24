@@ -189,7 +189,9 @@ ol {
 
 ul li,
 ol li {
-  padding-left: var(--spacing-0);
+  padding-left: var(--spacing-2);
+  margin-left : 2rem;
+
   margin-bottom: calc(var(--spacing-8) / 2);
 }
 
@@ -204,6 +206,10 @@ li *:last-child {
 li > ul {
   margin-left: var(--spacing-8);
   margin-top: calc(var(--spacing-8) / 2);
+}
+
+li::marker {
+  font-weight : 700;
 }
 
 blockquote {

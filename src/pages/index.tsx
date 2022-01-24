@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
+import "../style.css"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,9 +10,9 @@ import GlobalStyle from "../GlobalStyle"
 
 //style
 const PostItemsWrapper = styled.article`
-padding : 0px 20px;
-cursor : pointer;
-transition : 0.2s ease-in-out;
+  padding: 0px 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
   &:hover {
     background-color: var(--color-postitem-hover);
   }
@@ -62,6 +63,11 @@ const BlogIndex = ({ data, location }: BlogIndexProps) => {
             No blog posts found. Add markdown posts to "content/blog" (or the
             directory you specified for the "gatsby-source-filesystem" plugin in
             gatsby-config.js).
+          </p>
+          <p>
+            블로그 포스트가 없습니다. "content/blog" 디렉토리에 MarkDown
+            포스트를 추가하거나 "gatsby-source-filesystem" 플러그인을
+            적용하세요.
           </p>
         </Layout>
       </>
