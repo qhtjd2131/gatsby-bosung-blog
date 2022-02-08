@@ -2,14 +2,13 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import "../style.css"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import GlobalStyle from "../GlobalStyle"
 
 //style
-const PostItemsWrapper = styled.article`
+export const PostItemsWrapper = styled.article`
   padding: 0px 20px;
   cursor: pointer;
   transition: 0.2s ease-in-out;
@@ -17,11 +16,27 @@ const PostItemsWrapper = styled.article`
     background-color: var(--color-postitem-hover);
   }
 `
-const DescriptionWrapper = styled.section`
+
+export const DescriptionWrapper = styled.section`
   color: black;
 `
 
+
+
 //interface
+export interface ILinkProps {
+  data: {
+    site: {
+      siteMetadata: {
+        title: string
+      }
+    }
+    allMarkdownRemark: {
+      nodes: Inode[]
+    }
+  }
+}
+
 interface BlogIndexProps {
   data: {
     site: {
@@ -44,6 +59,7 @@ interface Inode {
   frontmatter: {
     date: string
     title: string
+    tag: string
     description: string
   }
 }
@@ -81,11 +97,11 @@ const BlogIndex = ({ data, location }: BlogIndexProps) => {
         <Seo title="All posts" />
         <Bio />
         <ol style={{ listStyle: `none` }}>
-          {posts.map(post => {
+          {posts.map((post: any) => {
             const title = post.frontmatter.title || post.fields.slug
 
             return (
-              <li key={post.fields.slug}>
+              <li key={post.fields.slug} className="post-item">
                 <PostItemsWrapper
                   className="post-list-item"
                   itemScope
@@ -112,6 +128,39 @@ const BlogIndex = ({ data, location }: BlogIndexProps) => {
             )
           })}
         </ol>
+        {/* tag를 기준으로 포스트 분류하여 link는 예시 */}
+        {/* <ol style={{ listStyle: `none` }}>
+          <li className="post-item">
+            <Link
+              to={"/no-cra"}
+              state={{
+                posts: posts.filter(a => a.frontmatter.tag === "no-cra"),
+              }}
+            >
+              <p>create-react-app 없이 app 구현하기</p>
+            </Link>
+          </li>
+          <li className="post-item">
+            <Link
+              to={"/gatsby-post"}
+              state={{
+                posts: posts.filter(a => a.frontmatter.tag === "gatsby"),
+              }}
+            >
+              <p>gatsby 이용하여 블로그 제작 및 배포 하기</p>
+            </Link>
+          </li>
+          <li className="post-item">
+            <Link to={"/javascript"}>
+              <p> javascript (구현 예정) </p>
+            </Link>
+          </li>
+          <li className="post-item" >
+            <Link to={"/react"}>
+              <p>react (구현 예정) </p>
+            </Link>
+          </li>
+        </ol> */}
       </Layout>
     </>
   )
@@ -136,6 +185,7 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+          tag
         }
       }
     }

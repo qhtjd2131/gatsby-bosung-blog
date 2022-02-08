@@ -2,6 +2,7 @@
 title: "Blog SEO 하기"
 date: "2022-01-05T17:11:07"
 description: "SEO 작업하고 Google에 등록하기"
+tag : "gatsby"
 ---
 
 # SEO 작업하고 Google에 등록하기

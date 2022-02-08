@@ -2,6 +2,7 @@
 title: "CRA 없이 React App 만들기3 - TypeScript 적용"
 date: "2022-01-15T17:22:00"
 description: "TypeScript 적용 해보기"
+tag : "no-cra"
 ---
 
 # TypeScript 적용 해보기

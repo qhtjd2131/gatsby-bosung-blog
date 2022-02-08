@@ -2,6 +2,7 @@
 title: "Create a blog with gatsby! Step 5."
 date: "2022-01-05T17:05:49"
 description: "Gatsby Cloud를 통해 블로그 배포하기"
+tag : "gatsby"
 ---
 
 # Gatsby Cloud를 통해 블로그 배포하기

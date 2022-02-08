@@ -2,6 +2,7 @@
 title: Why i created this blog?
 date: "2021-12-31T16:18:00"
 description: "why i created this blog"
+tag : "gatsby"
 ---
 
 # 블로그를 만들게 된 이유

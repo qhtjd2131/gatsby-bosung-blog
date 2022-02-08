@@ -2,6 +2,7 @@
 title: "Create a blog with gatsby! Step 1."
 date: "2021-12-31T21:36:00"
 description: "Gatsby Project를 생성하고, 로컬서버로 구동하기"
+tag : "gatsby"
 ---
 
 ## Gatsby Project를 생성하고, 로컬서버로 구동하기

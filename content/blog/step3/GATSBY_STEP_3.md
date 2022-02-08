@@ -2,6 +2,7 @@
 title: "Create a blog with gatsby! Step 3."
 date: "2022-01-03T17:16:00"
 description: "pages, components의 js파일을 tsx파일로 변환하기"
+tag : "gatsby"
 ---
 
 ## pages, components의 js파일을 tsx파일로 변환하기

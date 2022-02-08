@@ -2,6 +2,7 @@
 title: "Create a blog with gatsby! Step 2."
 date: "2022-01-01T17:15:00"
 description: "gatsby-config.js 분석 후 커스텀하기, 플러그인 설치 및 적용하기"
+tag : "gatsby"
 ---
 
 ## gatsby-config.js 분석 후 커스텀하기, 플러그인 설치 및 적용하기

@@ -195,6 +195,9 @@ ol li {
   margin-bottom: calc(var(--spacing-8) / 2);
 }
 
+.post-item{
+  margin-left : 0;
+}
 li > p {
   margin-bottom: calc(var(--spacing-8) / 2);
 }

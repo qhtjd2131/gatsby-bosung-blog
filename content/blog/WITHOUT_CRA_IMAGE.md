@@ -2,6 +2,7 @@
 title: "CRA 없이 React App 만들기2 - 이미지파일 번들링"
 date: "2022-01-12T17:22:00"
 description: "webpack v5의 asset을 사용하여 이미지파일 처리하기"
+tag : "no-cra"
 ---
 
 # 이미지 처리하기

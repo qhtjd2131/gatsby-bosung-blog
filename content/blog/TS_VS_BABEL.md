@@ -2,6 +2,7 @@
 title: "ts-loader vs @babel/preset-typescript"
 date: "2022-01-15T17:22:00"
 description: "ts-loader vs @babel/preset-typescript, 어느것을 사용해야하는가"
+tag : "no-cra"
 ---
 
 # ts-loader vs @babel/preset-typescript
