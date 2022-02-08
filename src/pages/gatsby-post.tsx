@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+// import React from "react";
+// import styled from "styled-components";
 
-const GatsbyPost = () => {
+// const GatsbyPost = () => {
 
-    return <div>gatsby post tag page</div>
-}
+//     return <div>gatsby post tag page</div>
+// }
 
-export default GatsbyPost;
+// export default GatsbyPost;
