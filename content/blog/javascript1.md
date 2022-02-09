@@ -6,17 +6,17 @@ tag : "javascript"
 ---
 
 
-# javascript 동작 원리
+# javascript 엔진(V8) 동작 원리
 
-이 포스트는 javascript 파일이 어떻게 변환되어서 실행되는지에 대한 간략한 내용을 담는다. 
+이 포스트는 크롬 브라우저, node.js 에서 사용하는 javascript 엔진인 V8이 javascript 파일을 어떻게 변환하고 실행하는지에 대한 간략한 내용을 담는다. 
 
-## javascript code의 변환 과정
+## javascript code의 변환 과정(V8)
 <br>
 
 
 >**참고**
-원문 : https://itnext.io/ast-for-javascript-developers-3e79aeb08343 
-번역문 : https://gyujincho.github.io/2018-06-19/AST-for-JS-devlopers
+>원문 : https://itnext.io/ast-for-javascript-developers-3e79aeb08343 
+>번역문 : https://gyujincho.github.io/2018-06-19/AST-for-JS-devlopers
 
 
 일반적으로 개발자는 `.js` 파일을 작성하고 컴파일러의 도움으로 실행된다.
