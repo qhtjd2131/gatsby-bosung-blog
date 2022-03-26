@@ -7,9 +7,11 @@ gatsby bosung's blog : https://gatsbybosungblogmain.gatsbyjs.io/
 
 ### preview
 <br>
+
 ![image](https://user-images.githubusercontent.com/34260967/148131232-4731174f-dd2b-4c82-a1b0-0f2c80d95970.png)
 
 <br>
+
 ![image](https://user-images.githubusercontent.com/34260967/148131340-54edfb83-4fdc-48b6-ba95-8344d8868f44.png)
 
 ### 기술스택
