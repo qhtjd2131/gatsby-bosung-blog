@@ -1,6 +1,6 @@
 ---
 title: "자바스크립트 런타임 동작원리"
-date: "2022-02-010T18:18:00"
+date: "2022-02-01T18:18:00"
 description: "javascript 런타임 동작 원리"
 tag : "javascript"
 ---
@@ -14,7 +14,8 @@ tag : "javascript"
 
 본 영상을 시청한 후 포스트를 읽는것이 도움이 될것이다.
 
-![image](https://user-images.githubusercontent.com/34260967/153304055-5c21c3b0-2d22-422a-aa44-e4b02a8851f2.png)
+
+<image src="https://user-images.githubusercontent.com/34260967/153304055-5c21c3b0-2d22-422a-aa44-e4b02a8851f2.png" width="600px">
 
 javascript 동작원리를 간단하게 그린 그림이다.
 
