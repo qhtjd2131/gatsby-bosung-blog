@@ -40,10 +40,10 @@ javascript는 이러한 특징을 가진다. 이는 곧 javascript가 런타임�
 
 차근차근 그림을 자세히 보자. Javascript를 해석하는 V8 엔진은 Heap과 Stack을 가진다.
 
-- Heap 
+- Heap <br>
     메모리 할당을 위한 공간
     <br>
-- Stack : Call Stack
+- Stack : Call Stack<br>
     Call Stack이라고 불리며, javascript가 단일 스레드 기반이기 때문에 Call Stack도 1개이다.
 
 
