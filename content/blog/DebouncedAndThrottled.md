@@ -1,6 +1,6 @@
 ---
 title: "Debounced 와 Throttled"
-date: "2022-02-010T18:18:00"
+date: "2022-05-03T18:15:00"
 description: "이벤트 처리에 있어서 과도한 리랜더링 방지를 위한 기술"
 tag : "javascript"
 ---
