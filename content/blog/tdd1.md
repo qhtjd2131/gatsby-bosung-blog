@@ -1,11 +1,11 @@
 ---
-title: "React TDD 를 위한 셋팅"
+title: "React TDD란? 어떤 도구를 사용해야하나?"
 date: "2022-06-11T22:00:00"
-description: "React TDD 를 위한 셋팅"
+description: "React TDD란? 어떤 도구를 사용해야하나?"
 tag : "jest"
 ---
 
-# React TDD & unit Test를 위한 셋팅
+# React TDD란? 어떤 도구를 사용해야하나?
 
 ---
 

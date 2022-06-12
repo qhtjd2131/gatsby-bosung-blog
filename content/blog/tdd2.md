@@ -117,3 +117,6 @@ npm install --save-dev @types/jest
 ```javscript
 npm install --save-dev @testing-library/react
 ```
+
+todo list
+1. package.json 보고 필요한 라이브러리 정리해서 포스트쓰기, 하나씩 지워가면서 test 해보기(꼭 필요한지 확인하려고)
