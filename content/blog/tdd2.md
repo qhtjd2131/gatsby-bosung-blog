@@ -57,7 +57,7 @@ React 공식 홈페이지에서는 테스팅 도구로 `react-test-renderer` 를
 
 ---
 
-# Jest 시작하기
+# Jest + TypeScript + babel + Testing Library 시작하기
 
 [Jest 시작하기 공식문서](https://jestjs.io/docs/getting-started#generate-a-basic-configuration-file) 를 바탕으로 Jest 환경을 구축해보자.
 
@@ -66,19 +66,24 @@ React 공식 홈페이지에서는 테스팅 도구로 `react-test-renderer` 를
 ```javascript
 npm install --save-dev jest
 ```
+<br>
 
 **Babel 관련 모듈 설치하기**
+
 이미 babel이 설치되어 있다면 `babel-jest`만 설치하면 된다.
 ```javascript
 npm install --save-dev babel-jest @babel/core @babel/preset-env @babel/preset-react
 ```
 
-다음은 `.ts`,`.tsx` 파일을 트랜스파일 해주는 babel plugin이다.
+다음은 `.ts`,`.tsx` 파일을 트랜스파일 해주는 babel plugin이다. 이 또한 Jest가 직접적으로 의존하는 모듈이 아니다. TypeScript를 사용하지 않는다면 설치할 필요는 없다.
+
 ```javascript
 npm install --save-dev @babel/preset-typescript
 ```
+<br>
 
 **babel.config.js 파일 생성하고 작성하기**
+
 ```javascript
 //babel.config.js
 module.exports = {
@@ -89,34 +94,196 @@ module.exports = {
   ],
 };
 ```
+<br>
 
 **typeChecking 기능 관련 모듈 설치하기**
+
 일반적으로 test 파일은 타입검사 기능을 수행하지 않는다. 하지만 원한다면, [ts-jest](https://github.com/kulshekhar/ts-jest) 모듈로 TypeChecking 기능을 수행할 수 있다.
+
 ```javascript
 npm install --save-dev ts-jest
 ```
 
+<br>
+
 **Jest 관련 Type 정의 모듈 설치하기**
+
 test 파일에서 사용되는 jest 관련 Type이 정의되어 있다. 필요하다면 다운하자.
 ```javascript
 npm install --save-dev @types/jest
 ```
 
+<br>
+
+**react-test-renderer 설치하기**
+스냅샷 테스트를 도와주는 `react-test-renderer` 도 공식문서에서 가이드하고 있다.
+
+```javascript
+npm install --save-dev react-test-renderer
+```
+
+<br>
+
+**jest-environment-jsdom 설치하기**
+
+Jest의 테스트 환경 중 하나인 jsdom을 다운로드 해야한다.
+```javascript
+npm install --save-dev jest-environment-jsdom
+```
+
+<br>
+
 **Jest's configuration 정의하기**
 
+TypeScript 환경에서의 Jest 설치는 다 끝났다. [Jest 공식문서](https://jestjs.io/docs/getting-started#generate-a-basic-configuration-file)에서는 시작 가이드에 configguration을 포함하고 있지 않다. 하지만 React 에서 진행되는 Test 는 Node환경이 아닌 브라우저 환경에서도 Test 할 수 있어야 한다. 따라서 `package.json` 안에 `jest:{}` 필드를 삽입하거나, `jest.config.js`를 만들어서 테스트 환경을 `Node`로 할것인지 `jsdom`으로 할것인지 정의해야한다.
 
+참고 : [jest configuration](https://jestjs.io/docs/configuration#testenvironment-string)
 
----
+해당 예제는 `package.json` 내에서 `jest`의 설정을 정의한다.
 
-#  @testing-library/react 시작하기
+```javascript
+//package.json
+{
+  ...
+  "devDependencies": {
+    ...
+  },
+  "dependencies": {
+    ...
+  },
+  "jest" : {                    // 이 부분
+    "testEnvironment": "jsdom"  // Default : "node"
+  }                             //
+}
 
-[Testing Library 공식문서](https://testing-library.com/docs/react-testing-library/intro/) 로 시작해보자.
+```
+<br>
+
+**jest를 실행하기 위해 script 추가하기**
+
+Jest를 간단하게 실행하기 위해 `package.json`의 `scripts`필드에 정의해준다.
+
+```javascript
+//package.json
+{
+  ...
+  "scripts": {        //
+    "test": "jest"    // 이부분
+  },                  //
+  "devDependencies": {
+    ...
+  },
+  "dependencies": {
+    ...
+  },
+  "jest" : {                    
+    ...
+  }                            
+}
+```
+
 <br>
 
 **@testing-library/react 설치하기**
+
+참고 : [Testing Library 공식문서](https://testing-library.com/docs/react-testing-library/intro/)
+<br>
+
 ```javscript
 npm install --save-dev @testing-library/react
 ```
 
-todo list
-1. package.json 보고 필요한 라이브러리 정리해서 포스트쓰기, 하나씩 지워가면서 test 해보기(꼭 필요한지 확인하려고)
+
+<br>
+
+
+---
+
+# 테스트 진행해보기
+
+**Render Teset**
+```javascript
+//Page3.tsx
+import React from "react";
+
+const Page3 = () => {
+  return (
+    <div>hello</div>
+  );
+};
+
+export default Page3;
+
+```
+
+```javascript
+//Page3.test.tsx
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom"  //toBeInTheDocument() 를 사용하기 위해서 필요합니다!
+import Page3 from "./Page3";
+
+describe("<Page3 />", () => {
+  it("page 3 render", () => {
+    render(<Page3 />);
+  });
+
+  it("hello text render", () =>{
+    render(<Page3 />);
+    expect(screen.getByText("hello")).toBeInTheDocument();
+  })
+});
+```
+입력 :
+```
+npm test -- Page3.test.tsx
+```
+
+결과 :
+```
+ PASS  src/pages/Page3.test.tsx
+  <Page3 />
+    √ page 3 render (15 ms)
+    √ hello text render (12 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.536 s
+Ran all test suites matching /Page3.test.tsx/i.
+```
+
+성공적으로 테스트를 하였습니다. 이제 어떤 기준을 가지고 어떻게 테스트를 할지는 개발자의 몫입니다!
+
+---
+
+# 요약
+
+설치 : 
+
+```javascript
+npm install --save-dev jest babel-jest @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript ts-jest @types/jest react-test-renderer jest-environment-jsdom
+ @testing-library/react @testing-library/jest-dom
+```
+
+<br>
+설정 :
+
+```javascript
+//package.json
+{
+  ...
+  "scripts": {        //
+    "test": "jest"    // 이부분 추가
+  },                  //
+  "devDependencies": {
+    ...
+  },
+  "dependencies": {
+    ...
+  },
+  "jest" : {                    // 이 부분 추가
+    "testEnvironment": "jsdom"  // Default : "node"
+  }                             //
+}
+```
