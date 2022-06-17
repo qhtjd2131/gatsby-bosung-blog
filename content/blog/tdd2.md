@@ -1,6 +1,6 @@
 ---
 title: "Jest + React Testing Library 시작하기"
-date: "2022-06-11 invalid date"
+date: "2022-06-14T22:00:00"
 description: "Jest + React Testing Library 시작하기"
 tag: "jest"
 ---
@@ -70,7 +70,8 @@ npm install --save-dev jest
 
 **Babel 관련 모듈 설치하기**
 
-이미 babel이 설치되어 있다면 `babel-jest`만 설치하면 된다.
+이미 babel이 설치되어 있다면 `babel-jest`만 설치하면 된다. `babel-jest`는 es6구문인 test file을 es5로 트랜스파일 하기 위해 사용된다.
+
 ```javascript
 npm install --save-dev babel-jest @babel/core @babel/preset-env @babel/preset-react
 ```
@@ -96,13 +97,17 @@ module.exports = {
 ```
 <br>
 
-**typeChecking 기능 관련 모듈 설치하기**
+**typeChecking 기능 관련 모듈 설치하기, 적용하기**
 
 일반적으로 test 파일은 타입검사 기능을 수행하지 않는다. 하지만 원한다면, [ts-jest](https://github.com/kulshekhar/ts-jest) 모듈로 TypeChecking 기능을 수행할 수 있다.
 
 ```javascript
 npm install --save-dev ts-jest
 ```
+
+
+
+`ts-jest`를 이용하여 typeChecking 기능을 사용하려면 jest configuration를 정의해주어야 한다. configuration의 방법은 아래 **Jest's configuration 정의하기**에서 소개한다.
 
 <br>
 
