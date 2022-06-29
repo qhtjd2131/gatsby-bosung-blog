@@ -220,7 +220,7 @@ Ran all test suites matching /VerticalBarChart.test.tsx/i.
 
 ---
 
-## Test 파일 작성하기 (처음 부터)
+## Test 파일 완성하기
 
 위와 같은 방식을 반복하여 아래 항목을 만족한는 테스트파일을 작성해보자.
 
@@ -297,9 +297,150 @@ describe("<VerticalBarChart />", () => {
 });
 ```
 
-위의 테스트 목적에 맞는 테스트파일을 작성하였다. 이 테스트가 사용자관점에서의 완성도를 100% 보장 할 수는 없다. 꼭 필요한 테스트가 있다면, 추가 해주면 된다. 
+위의 테 스트 목적에 맞는 테스트파일을 작성하였다. 이 테스트가 사용자관점에서의 완성도를 100% 보장 할 수는 없다. 개발 하다가 꼭 필요한 테스트가 있다면, 추가 해주면 된다. 
 
-여기서 명심해야할 것은 테스트는 테스트일 뿐이라는 거다. 우리가 테스트를 진행하는 목적과 의도를 반드시 기억하면서 진행한다면, 효율적이고 안정적인 개발환경이 구성될 것이다.
+## test file 기반으로 Component 구현하기.
+
+test file이 요구하는 사항을 맞춰서 component를 구현해보자.
+
+component 내에 존재하는 elements는 아래와 같다.
+- SVG
+  - Bars
+  - xAxios
+  - yAxios
+
+component 내에 사용되는 function과 변수는 아래와 같다.
+- scaleX()
+- scaleY()
+- margin
+- width
+- height
+
+```javascript
+import React, { useEffect, useRef } from "react";
+import { BarChartData } from "../../pages/Page1";
+import * as d3 from "d3";
+import styled from "styled-components";
+
+interface VerticalBarChartProps {
+  data: BarChartData[];
+}
+
+const VerticalBarChart = (props: VerticalBarChartProps) => {
+  const { data } = props;
+  const svgRef = useRef(null);
+  const barRef = useRef(null);
+  const xAxisRef = useRef(null);
+  const yAxisRef = useRef(null);
+
+  const width = 600;
+  const height = 400;
+  const margin = { top: 20, right: 0, bottom: 30, left: 40 };
+
+  const scaleX = d3
+    .scaleBand()
+    .domain(data.map((d) => d.name))
+    .range([margin.left, width - margin.right])
+    .padding(0.2);
+
+  const scaleY = d3
+    .scaleLinear()
+    .domain([0, 50])
+    .range([height - margin.bottom, margin.top]);
+
+  useEffect(() => {
+    const svg = d3
+      .select(svgRef.current)
+      .attr("viewBox", [0, 0, width, height])
+      .attr("width", `${width}px`)
+      .attr("height", `${height}px`);
+
+    d3.select(barRef.current)
+      .attr("fill", "#2c303a")
+      .selectAll("rect")
+      .data(data)
+      .join("rect")
+      .attr("x", (d: BarChartData) : any => scaleX(d.name))
+      .attr("y", (d) => scaleY(d.value))
+      .attr("width", scaleX.bandwidth())
+      .attr("height", (d) => scaleY(0) - scaleY(d.value))
+      .attr("role", (d)=> "rect-"+d.name)
+
+    d3.select(xAxisRef.current)
+      .call(d3.axisBottom(scaleX) as any)
+      .attr("stroke", "white")
+      .attr("transform", `translate(0,${height - margin.bottom})`);
+
+    d3.select(yAxisRef.current)
+      .attr("stroke", "white")
+      .attr("transform", `translate(${margin.left}, 0)`)
+      .call(d3.axisLeft(scaleY) as any);
+
+    svg.selectAll("text").attr("font-size", "20px");
+    svg.selectAll("path").attr("stroke", "white");
+    svg.selectAll("line").attr("stroke", "white");
+
+  }, [data]);
+
+  return (
+    <BarChartWrapper>
+      <SVG ref={svgRef}>
+        <g role="bar" ref={barRef} />
+        <g role="xAxis" ref={xAxisRef} />
+        <g role="yAxis" ref={yAxisRef} />
+      </SVG>
+    </BarChartWrapper>
+  );
+};
+
+export default VerticalBarChart;
+
+const BarChartWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* justify-content: flex-start;
+  align-items: center; */
+  flex-direction: column;
+`;
+const SVG = styled.svg.attrs({
+  version: "1.1",
+  xmlns: "http://www.w3.org/2000/svg",
+  xmlnsXlink: "http://www.w3.org/1999/xlink",
+})`
+  font-size: 24px;
+  margin: 12px;
+`;
+
+```
+
+참고 : d3와 typescript가 완벽하게 호환되지 않는것 같다. typescript가 주제가 아니므로 any를 사용했다.
+
+## 결과 확인하기
+
+```node
+qhtjd@DESKTOP-95HO4K5 MINGW64 ~/react/react-d3-tdd (main)
+$ npm test -- VerticalBarChart.test.tsx
+
+> react-d3-tdd@1.0.0 test
+> jest "VerticalBarChart.test.tsx"
+
+ PASS  src/components/pageComponents/VerticalBarChart.test.tsx
+  <VerticalBarChart />
+    √ <VerticalBarChart /> render (50 ms)
+    √ xAxis render (49 ms)
+    √ yAxis render (28 ms)
+    √ bar render (27 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        5.669 s, estimated 12 s
+Ran all test suites matching /VerticalBarChart.test.tsx/i.
+
+```
+
+성공적으로 테스트가 진행되었다.
 
 ---
 
